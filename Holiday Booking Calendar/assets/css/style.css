@@ -1,0 +1,429 @@
+/* ========================
+   CSS Variables
+   ======================== */
+:root {
+  --primary-color: #0073aa;
+  --primary-hover: #005f8d;
+  --secondary-color: #2d1d66;
+  --bg-color: #f5f5f5;
+  --card-bg: #fff;
+  --card-bg-bone: #f7f5f3;
+  --card-item-bg: #f8f4ed;
+  --card-item-p-bg: #f3f1ee;
+  --border-color: #e0e0e0;
+  --text-color: #333;
+  --text-muted: #555;
+  --shadow-light: rgba(0,0,0,0.05);
+  --shadow-medium: rgba(0,0,0,0.1);
+  --remove-any: #771e1a;
+  --card-input: #f8f8f8;
+}
+
+/* ========================
+   Global Layout
+   ======================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* ========================
+   Buttons
+   ======================== */
+button,
+.select-cabin-btn,
+.select-activity-btn,
+.remove-cabin-btn,
+.remove-activity-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+button:hover,
+.select-cabin-btn:hover,
+.select-activity-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* ========================
+   Form Inputs
+   ======================== */
+.hbc-input-group {
+  margin-bottom: 15px;
+}
+.hbc-input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--text-muted);
+}
+.hbc-input-group input {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: var(--card-input);
+}
+
+/* ========================
+   Popup Overlay
+   ======================== */
+#hbc-popup-overlay {
+  background: rgba(0,0,0,0.5);
+}
+#hbc-popup {
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* ========================
+   Scrollbars
+   ======================== */
+.activities-carousel::-webkit-scrollbar,
+.cabin-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.activities-carousel::-webkit-scrollbar-thumb,
+.cabin-grid::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.activities-carousel::-webkit-scrollbar-track,
+.cabin-grid::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+}
+
+/* ========================
+   Confirmation Page
+   ======================== */
+.hbc-confirmation {
+  max-width: 600px;
+  margin: 40px auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-medium);
+}
+.hbc-confirmation h1 {
+  margin: 0 0 20px;
+  color: var(--primary-color);
+}
+.hbc-confirmation ul {
+  list-style: none;
+  padding: 0;
+}
+.hbc-confirmation li {
+  margin-bottom: 10px;
+}
+
+/* ========================
+   Index Page (Cabin Listings)
+   ======================== */
+#index-page .cabin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px 0;
+}
+#index-page .cabin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#index-page .cabin-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px var(--shadow-medium);
+}
+#index-page .cabin-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+#index-page .cabin-card-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#index-page .cabin-card-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+}
+#index-page .cabin-card-content p {
+  flex: 1;
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+#index-page .cabin-card-content .price {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+#index-page .cabin-card-content .select-cabin-btn {
+  padding: 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  width: auto;
+}
+
+/* ========================
+   Cabin Page
+   ======================== */
+.cabin-container .cabin-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .cabin-container .cabin-main {
+    grid-template-columns: 1fr;
+  }
+}
+.cabin-container .cabin-media {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cabin-container .cabin-image img {
+  min-width: 700px;
+  max-width: 1000px;
+  max-height: 700px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+.cabin-container .cabin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cabin-container .cabin-info h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+.cabin-container .cabin-info .location {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+.cabin-container .cabin-info .price {
+  font-size: 1.4rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+.cabin-container .cabin-info .description {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+.cabin-container .cabin-booking .booking-form {
+  width: 310px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cabin-container .cabin-booking .datepicker-container {
+  width: 100%;
+}
+.cabin-container .cabin-booking #hbc-book-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ========================
+   Form Page
+   ======================== */
+.activities-section {
+  width: 65%;
+  text-align: center;
+  background: var(--card-bg-bone);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+.activities-section .section-heading {
+  margin: 0 0 16px;
+  font-size: 1.7rem;
+  color: var(--text-color);
+}
+.activities-carousel {
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+.hbc-activity,
+.activity-card {
+  flex: 0 0 200px;
+  background: var(--card-bg-bone);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hbc-activity:hover,
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+.hbc-activity img,
+.activity-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.select-activity-btn,
+.remove-activity-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+.remove-activity-btn {
+  background: var(--remove-any);
+}
+.select-activity-btn:hover,
+.remove-activity-btn:hover {
+  background: var(--secondary-color);
+}
+
+.booking-grid {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.booking-form {
+  width: 65%;
+  background: var(--card-bg-bone);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.confirm-book-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.confirm-book-btn:hover {
+  background: var(--secondary-color);
+}
+
+.price-summary {
+  width: 25%;
+  background: var(--card-bg-bone);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.price-summary .section-heading {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
+  color: var(--primary-color);
+}
+.hbc-pricing-group h4 {
+  margin: 0;
+  color: var(--text-muted);
+  background-color: var(--card-item-bg);
+  border: 1px solid var(--border-color);
+  padding-left: 10px;
+  border-radius: 6px;
+}
+.hbc-pricing-group p,
+#hbc-selected-activities {
+  padding-left: 40px;
+  margin: 0;
+  color: var(--text-color);
+  background-color: var(--card-item-p-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+
+.flatpickr-day.fp-unavailable {
+  background-color: #f8d7da !important;
+  color: #721c24 !important;
+}
+/* Available dates */
+.flatpickr-day.fp-available {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+}
+
+/* Ensure disabled days show red */
+.flatpickr-day.fp-unavailable.disabled {
+  opacity: 1 !important;
+}
+
+.flatpickr-day.fp-past.disabled {
+  background-color: #e9ecef !important;
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
